@@ -49,8 +49,9 @@
      </li>
 <% end %>
 </ul>
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<button type="button" style="margin-right: 15px;"> <%= link_to 'Back', books_path %> </button>
+<button type="button" > <%= link_to 'Edit', edit_book_path(@book) %> </button>
+
 </div>
 <style>
     .review{
