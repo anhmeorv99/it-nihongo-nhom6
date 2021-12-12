@@ -4,10 +4,13 @@
     <title>Trang Chu</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
@@ -18,26 +21,50 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="startbootstrap/css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <link href="startbootstrap/css/styles.css" rel="stylesheet
-        
+                <link href="startbootstrap/css/styles.css" rel="stylesheet
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
-    
+
+
   </head>
 
   <body>
-    <% if user_signed_in? %>
-    <!--<p>こんにちわ, <%= current_user.email %></p>-->
-    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        <div class="header-blue">
+            <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
 
-    <%= link_to current_user.name, users_show_path %>
-    <% else %>
-    <%= link_to "Sign in", new_user_session_path %>
-    <%= link_to "Sign up", new_user_registration_path %>
-    <% end %>
+                <div class="container-fluid"><%= link_to 'BOOK MANAGER', root_path, {:class => "navbar-brand"} %><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item" role="presentation"> <%= link_to 'HOME', root_path, {:class => "nav-link"} %></li>
+                            <li class="nav-item" role="presentation"> <%= link_to 'MANGAS', mangas_path, {:class => "nav-link"} %></li>
+                            <li class="nav-item" role="presentation"> <%= link_to 'BOOKS', books_path, {:class => "nav-link"} %></li>
+                            <li class="nav-item" role="presentation"> <%= link_to 'SCHOOL SUPPLIES', school_stuffs_path, {:class => "nav-link"} %></li>
+
+
+                        </ul>
+                        <form class="form-inline mr-auto" target="_self">
+                            <div class="form-group"><label for="search-field">
+                                <i class="fa fa-search text-white"></i>
+                            </label>
+                            <input class="form-control search-field" type="search" id="search-field" name="search"></div>
+                        </form>
+                        <span class="navbar-text">
+                          <% if user_signed_in? %>
+                            <!--<p>こんにちわ, <%= current_user.email %></p>-->
+                            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                            <%= link_to current_user.name, users_show_path %>
+                            <% else %>
+                            <%= link_to "Sign in", new_user_session_path, {:class => "login"} %>
+
+                            <% end %>
+                        </span>
+                        <%= link_to "Sign up", new_user_registration_path, {:class => "btn btn-light action-button"} %>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
     
 <hr>
     <%= yield %>

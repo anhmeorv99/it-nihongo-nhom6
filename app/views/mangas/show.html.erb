@@ -1,43 +1,52 @@
 <p id="notice"><%= notice %></p>
 <h1 style="color: Blue; padding-left: 5px "> Manga Review</h1>
 <div class="" style="margin-left: 5%">
-    <table class="" >
-       <tbody>
-         <tr>
-           <td><strong>Title:</strong></td>
-           <td style="padding-left: 15px"><%= @manga.title %></td>
-          </tr>
-          <tr>
-            <td><strong>Number of pages:</strong></td>
-            <td style="padding-left: 15px"><%= @manga.number_of_pages %></td>
-          </tr>
-          <tr>
-            <td><strong>Price:</strong></td>
-            <td style="padding-left: 15px"><%= @manga.price %></td>
-          </tr>
-          <tr>
-            <td><strong>Author:</strong></td>
-            <td style="padding-left: 15px"><%= @manga.author %></td>
-          </tr>
-          <tr>
-            <td><strong>Pulisher:</strong></td>
-            <td style="padding-left: 15px"><%= @manga.pulisher %></td>
-          </tr>
-       </tbody>
-    </table>
 
-  
-   <p><strong>Image:</trong></br>
-   </hr>
+<div class = "manga_views">
+    <div class="container container1">
 
-  <% if @manga.image.attached? %>
+        <div class="row">
+            <div @class="col">
+                <% if @manga.image.attached? %>
+                    <%= image_tag @manga.image %>
+                <% end %>
+            </div>
 
-    <%= image_tag @manga.image %>
+        <div @class="col" style="margin: auto;">
+            <table>
+                <tbody>
+                     <tr>
+                       <td><strong>Title:</strong></td>
+                       <td style="padding-left: 15px"><%= @manga.title %></td>
+                        </tr>
+                        <tr>
+                    <td><strong>Number of pages:</strong></td>
+                            <td style="padding-left: 15px"><%= @manga.number_of_pages %></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Price:</strong></td>
+                        <td style="padding-left: 15px"><%= @manga.price %></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Author:</strong></td>
+                        <td style="padding-left: 15px"><%= @manga.author %></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Pulisher:</strong></td>
+                        <td style="padding-left: 15px"><%= @manga.pulisher %></td>
+                      </tr>
+                </tbody>
+            </table>
+           </div>
 
-  <% end %>
+        </div>
 
-   </p>
-<h2 style="color: Blue">Review From</h2>
+
+
+    </div>
+
+    <div class = "container">
+            <h2 style="color: Blue">Review From</h2>
 <%= form_with(model: @manga_review, local: true) do |form| %>
   <div class= "field">
     <%= form.text_area :review %>
@@ -52,14 +61,18 @@
 <ul>
   <% @manga.manga_review.each do |manga_review|%></br>
   <li  class="review">
-
      <b><%= manga_review.user.name if manga_review.user %></b>: <%= manga_review.review %></br>
      </li>
 <% end %>
 </ul>
-<%= link_to 'Edit', edit_manga_path(@manga) %> |
-<%= link_to 'Back', mangas_path %>
+<button type="button" style="margin-right: 15px;"> <%= link_to 'Back', mangas_path %> </button>
+
+<button type="button" > <%= link_to 'Edit', edit_manga_path(@manga) %> </button>
 </div>
+    </div>
+
+</div>
+
 <style>
     .review{
         border: 1px solid #000;
