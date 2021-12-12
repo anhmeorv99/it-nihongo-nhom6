@@ -1,6 +1,6 @@
-<div class="card col-sm-6 mx-auto mt-5">
+<div class="card col-sm-4 mx-auto mt-5" style="margin-bottom: 20px">
   <% if @user.avatar.attached? %>
-  <%= image_tag @user.avatar, class: "card-img-top" %>
+  <%= image_tag @user.avatar, class: "card-img-top", style: "width:520px; height:480px" %>
   <% end %>
   <div class="card-body">
     <h5 class="card-title"><%= @user.name %></h5>
@@ -9,6 +9,5 @@
     <p class="card-text"><%= @user.phone %></p>
     <p class="card-text"><%= @user.email %></p>
   </div>
-  <%= link_to 'Back', :back %>
-  <%= link_to 'Edit', edit_user_registration_path %>
-</div> 
+<button type="button"> <%= link_to 'Edit', edit_user_registration_path %> </button>
+</div>
