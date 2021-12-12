@@ -1,0 +1,14 @@
+<div class="card col-sm-6 mx-auto mt-5">
+  <% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar, class: "card-img-top" %>
+  <% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @user.name %></h5>
+    <h6 class="card-subtitle text-muted"><%= @user.age %>歳</h6>
+    <p class="card-text"><%= @user.address %></p>
+    <p class="card-text"><%= @user.phone %></p>
+    <p class="card-text"><%= @user.email %></p>
+  </div>
+  <%= link_to 'Back', :back %>
+  <%= link_to 'Edit', edit_user_registration_path %>
+</div> 
