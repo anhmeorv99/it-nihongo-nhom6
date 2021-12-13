@@ -1,7 +1,7 @@
 # IT-nihongo
 ## version:
 - ruby: 2.7.0
-- rails: 6.0
+- rails: 6.1.4.1
 ## run:
 - git clone  https://github.com/anhmeorv99/it-nihongo-nhom6.git
 - bundle install
